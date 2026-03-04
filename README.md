@@ -76,7 +76,7 @@ Personal_Portfolio/
 
 1. **Clone or Download** the repository
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Srinath-69/Personal-Portfolio.git
    cd Personal_Portfolio
    ```
 
@@ -300,3 +300,4 @@ For questions or issues, please:
 **Made different. Made to win. 🚀**
 
 Built for Student Hackathon 2026 • Scholar IT Solutions
+
