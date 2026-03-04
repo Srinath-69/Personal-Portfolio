@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS | Srinath's Cosmic Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body class="bg-black text-white overflow-x-hidden font-sans">
+
+    <!-- SCROLL PROGRESS BAR -->
+    <div id="progress-bar"></div>
+
+    <!-- CUSTOM CURSOR -->
+    <div id="custom-cursor"></div>
+
+    <!-- ROCKET PRELOADER -->
+    <div id="preloader">
+        <div class="text-center">
+            <div class="text-8xl mb-6 animate-bounce">🚀</div>
+            <div class="text-3xl font-bold tracking-widest neon-text">LAUNCHING NEXUS...</div>
+            <div class="mt-8 text-sm opacity-50">Student Hackathon 2026 • Srinath G.</div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-xl shadow-lg shadow-cyan-500/50">🌌</div>
+                <span class="logo-font text-3xl font-semibold tracking-tighter neon-text">NEXUS</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+                <a href="#home" onclick="smoothScrollTo('home');return false" class="hover:text-cyan-400 transition-colors">HOME</a>
+                <a href="#about" onclick="smoothScrollTo('about');return false" class="hover:text-cyan-400 transition-colors">ABOUT ME</a>
+                <a href="#skills" onclick="smoothScrollTo('skills');return false" class="hover:text-cyan-400 transition-colors">SKILLS</a>
+                <a href="#projects" onclick="smoothScrollTo('projects');return false" class="hover:text-cyan-400 transition-colors">PROJECTS</a>
+                <a href="#contact" onclick="smoothScrollTo('contact');return false" class="hover:text-cyan-400 transition-colors">CONTACT</a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <a href="https://drive.google.com/file/d/1XtgOFOvrGe_MLcQOWJUB_bQUk8ZGpCC2/view?usp=sharing" target="_blank"
+                  download="Srinath_Resume.pdf"
+                  type="application/pdf"
+                  onclick="launchResumeRocket(this)"
+                  class="px-6 py-3 bg-gradient-to-r from-cyan-400 to-purple-500 hover:from-purple-500 hover:to-cyan-400 text-black font-semibold rounded-3xl flex items-center gap-x-2 transition-all shadow-lg shadow-purple-500/30 text-sm">
+                 <i class="fa-solid fa-download"></i>
+                 <span>RESUME</span>
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden w-11 h-11 flex items-center justify-center rounded-2xl glass">
+                    <i id="hamburger-icon" class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 py-6">
+            <div class="flex flex-col items-center gap-y-6 text-lg font-medium">
+                <a href="#home" onclick="toggleMobileMenu();smoothScrollTo('home');return false" class="hover:text-cyan-400">HOME</a>
+                <a href="#about" onclick="toggleMobileMenu();smoothScrollTo('about');return false" class="hover:text-cyan-400">ABOUT ME</a>
+                <a href="#skills" onclick="toggleMobileMenu();smoothScrollTo('skills');return false" class="hover:text-cyan-400">SKILLS</a>
+                <a href="#projects" onclick="toggleMobileMenu();smoothScrollTo('projects');return false" class="hover:text-cyan-400">PROJECTS</a>
+                <a href="#contact" onclick="toggleMobileMenu();smoothScrollTo('contact');return false" class="hover:text-cyan-400">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="min-h-screen relative flex items-center justify-center overflow-hidden">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black z-10"></div>
+        
+        <div class="relative z-20 max-w-5xl mx-auto px-6 text-center pt-32">
+            <div class="inline-flex items-center gap-x-3 px-6 py-2 rounded-3xl glass mb-8 text-sm tracking-widest">
+                <div class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                WEB DEVELOPER
+            </div>
+            
+            <h1 class="text-7xl md:text-8xl font-bold logo-font tracking-tighter mb-4 neon-text">SRINATH</h1>
+            <h2 class="text-5xl md:text-6xl font-bold logo-font tracking-tighter bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-6">G<span class="text-4xl">.</span></h2>
+            
+            <p id="tagline" class="typing text-2xl md:text-3xl font-medium text-cyan-300 mb-12">Frontend Alchemist &amp; Cosmic Coder</p>
+            
+            <div class="inline-flex items-center gap-4 bg-white/5 px-8 py-4 rounded-3xl mb-12 border border-white/10">
+                <div id="visitor-count" class="text-4xl font-bold text-cyan-400 tabular-nums">2487</div>
+                <div class="text-left text-sm">
+                    <div class="text-gray-400">ASTRONAUTS</div>
+                    <div class="text-xs text-emerald-400">VISITED THIS PORTFOLIO</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a href="#projects" onclick="smoothScrollTo('projects');return false;" id="explore-btn"
+                   class="rocket-btn group px-10 py-6 bg-white text-black font-semibold text-xl rounded-3xl flex items-center gap-x-4 hover:scale-105 transition-all shadow-2xl">
+                    EXPLORE PROJECTS
+                    <span class="text-3xl transition-transform group-active:rotate-45">→</span>
+                </a>
+                
+                <button onclick="launchRocketAndScroll()" 
+                        class="px-8 py-6 border border-white/30 hover:border-cyan-400 rounded-3xl font-medium flex items-center gap-x-3 text-lg transition-all">
+                    <i class="fa-solid fa-rocket"></i> LAUNCH ME
+                </button>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center gap-y-2 text-xs tracking-widest opacity-60">
+            <div>SCROLL TO ORBIT ↓</div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-28 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-[4rem] -rotate-6"></div>
+                        <img src="assets/images/PROFILE.png" alt="Srinath" 
+                             class="rounded-3xl shadow-2xl w-full aspect-[4/5] object-cover relative z-10 border border-white/10">
+                        <div class="absolute -bottom-6 -right-6 glass px-8 py-4 rounded-3xl flex items-center gap-x-4 shadow-xl z-30">
+                            <div class="text-4xl">🇮🇳</div>
+                            <div>
+                                <div class="font-semibold">Based in</div>
+                                <div class="text-cyan-400">Hyderabad, India</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7">
+                    <div class="max-w-2xl">
+                        <span class="px-6 py-2 rounded-full border border-cyan-400/30 text-cyan-400 text-sm tracking-widest">CHAPTER 01 • THE ORIGIN</span>
+                        <h2 class="section-title text-5xl font-bold mt-8 mb-10">Hello, I'm Srinath.<br>A student building the future one pixel at a time.</h2>
+                        <div class="prose prose-invert text-lg leading-relaxed text-gray-300">
+                            <p>Passionate frontend developer and hackathon enthusiast currently pursuing Computer Science. 
+                            I turn coffee into clean, responsive, and jaw-dropping web experiences. 
+                            My mission? Create digital products that don't just work — they inspire.</p>
+                            <p>When I'm not coding, you'll find me exploring new design trends, contributing to open source, 
+                            or launching paper rockets (yes, really).</p>
+                        </div>
+                        <div class="mt-12 grid grid-cols-3 gap-6">
+                            <div><div class="text-4xl font-bold text-cyan-400">10+</div><div class="text-sm text-gray-400">Projects Launched</div></div>
+                            <div><div class="text-4xl font-bold text-purple-400">5+</div><div class="text-sm text-gray-400">Hackathons Participated</div></div>
+                            <div><div class="text-4xl font-bold text-amber-400">∞</div><div class="text-sm text-gray-400">Lines of Code</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS, PROJECTS, CONTACT, FOOTER, MODAL (exactly as in your document) -->
+     <!-- SKILLS -->
+    <section id="skills" class="py-28 bg-gradient-to-b from-black to-zinc-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-6 py-2 rounded-full border border-purple-400/30 text-purple-400 text-sm tracking-widest">CHAPTER 02 • CONSTELLATION</span>
+                <h2 class="section-title text-5xl font-bold mt-6">Skills that make the stars align</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Skill 1-->
+                <div onclick="animateSkill(this)" class="glass rounded-3xl p-8 group cursor-pointer hover:border-cyan-400/50 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fa-brands fa-html5 text-6xl text-orange-400"></i>
+                        <div class="text-right"><div class="text-5xl font-bold text-cyan-300">95</div><div class="text-xs tracking-widest">PROFICIENCY</div></div>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-[95%] bg-gradient-to-r from-orange-400 to-red-400 rounded-full skill-bar"></div></div>
+                    <div class="mt-8 text-2xl font-semibold">HTML5</div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div onclick="animateSkill(this)" class="glass rounded-3xl p-8 group cursor-pointer hover:border-cyan-400/50 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fa-brands fa-css3-alt text-6xl text-blue-400"></i>
+                        <div class="text-right">
+                            <div class="text-5xl font-bold text-cyan-300">92</div>
+                            <div class="text-xs tracking-widest">PROFICIENCY</div>
+                        </div>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full w-[92%] bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full skill-bar"></div>
+                    </div>
+                    <div class="mt-8 text-2xl font-semibold">CSS3 + Tailwind</div>
+                    <div class="text-sm text-gray-400">Animations • Glassmorphism • Responsive</div>
+                </div>
+                
+                <!-- Skill 3 -->
+                <div onclick="animateSkill(this)" class="glass rounded-3xl p-8 group cursor-pointer hover:border-cyan-400/50 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fa-brands fa-js text-6xl text-yellow-400"></i>
+                        <div class="text-right">
+                            <div class="text-5xl font-bold text-cyan-300">88</div>
+                            <div class="text-xs tracking-widest">PROFICIENCY</div>
+                        </div>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full w-[88%] bg-gradient-to-r from-yellow-400 to-amber-400 rounded-full skill-bar"></div>
+                    </div>
+                    <div class="mt-8 text-2xl font-semibold">JavaScript</div>
+                    <div class="text-sm text-gray-400">Vanilla • Canvas • Interactions</div>
+                </div>
+                
+                <!-- Skill 4 -->
+                <div onclick="animateSkill(this)" class="glass rounded-3xl p-8 group cursor-pointer hover:border-cyan-400/50 transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <i class="fa-solid fa-fire text-6xl text-red-400"></i>
+                        <div class="text-right">
+                            <div class="text-5xl font-bold text-cyan-300">85</div>
+                            <div class="text-xs tracking-widest">PROFICIENCY</div>
+                        </div>
+                    </div>
+                    <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div class="h-full w-[85%] bg-gradient-to-r from-red-400 to-pink-400 rounded-full skill-bar"></div>
+                    </div>
+                    <div class="mt-8 text-2xl font-semibold">React / Next.js</div>
+                    <div class="text-sm text-gray-400">Modern Frameworks</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16 text-sm opacity-60">+ 12 more technologies in my toolkit (Git • Figma • Firebase • Node.js • Python)</div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-28">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <span class="px-6 py-2 rounded-full border border-purple-400/30 text-purple-400 text-sm tracking-widest">CHAPTER 03 • GALAXY</span>
+                    <h2 class="section-title text-5xl font-bold mt-6">Featured Missions</h2>
+                </div>
+                <div class="flex gap-3 mt-8 md:mt-0 flex-wrap" id="project-filters">
+                    <button onclick="filterProjects('all')" class="active-filter px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 hover:border-white transition-all">ALL</button>
+                    <button onclick="filterProjects('ui')" class="px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 hover:border-white transition-all">UI/UX</button>
+                    <button onclick="filterProjects('web')" class="px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 hover:border-white transition-all">WEB</button>
+                    <button onclick="filterProjects('interactive')" class="px-8 py-3 rounded-3xl text-sm font-medium border border-white/30 hover:border-white transition-all">INTERACTIVE</button>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT - EMAILJS -->
+    <section id="contact" class="py-28 bg-gradient-to-b from-zinc-950 to-black">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="glass rounded-3xl p-12 md:p-16">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-bold mb-4">Ready to launch something together?</h2>
+                    <p class="text-gray-400">Drop me a message and let's make the internet more beautiful.</p>
+                </div>
+                
+                <form id="contact-form" class="space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">YOUR NAME</label>
+                            <input type="text" name="name" id="name" required class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 rounded-2xl px-6 py-5 outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-gray-400">EMAIL</label>
+                            <input type="email" name="email" id="email" required class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 rounded-2xl px-6 py-5 outline-none transition-all">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-2 text-gray-400">MESSAGE</label>
+                        <textarea name="message" id="message" rows="6" required class="w-full bg-white/5 border border-white/10 focus:border-cyan-400 rounded-3xl px-6 py-5 outline-none transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-7 bg-gradient-to-r from-cyan-400 to-purple-500 text-black font-bold text-xl rounded-3xl hover:brightness-110 transition-all flex items-center justify-center gap-x-3">
+                        SEND TRANSMISSION <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-x-8 text-3xl mb-10">
+                <a href="https://github.com/Srinath-69" target="_blank" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/srinath261" target="_blank" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <div class="text-sm opacity-50">© 2026 Srinath G. • Built for Student Hackathon 2026 • Scholar IT Solutions</div>
+            <div class="mt-8 text-[10px] opacity-30">Made different. Made to win. 🚀</div>
+        </div>
+    </footer>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" onclick="if(event.target.id==='project-modal') closeModal()" class="hidden fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="max-w-2xl w-full glass rounded-3xl overflow-hidden">
+            <div id="modal-image" class="h-72 bg-zinc-800"></div>
+            <div class="p-8">
+                <div id="modal-title" class="text-4xl font-bold mb-2"></div>
+                <div id="modal-tech" class="text-cyan-400 text-sm mb-6"></div>
+                <div id="modal-desc" class="text-gray-300 leading-relaxed"></div>
+                <div class="flex gap-4 mt-10">
+                    <a id="modal-github" href="#" target="_blank" class="flex-1 py-6 border border-white/30 hover:bg-white/5 rounded-2xl text-center font-medium transition-all">VIEW ON GITHUB</a>
+                    <a id="modal-live" href="#" target="_blank" class="flex-1 py-6 bg-white text-black rounded-2xl text-center font-semibold transition-all">LIVE DEMO</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
