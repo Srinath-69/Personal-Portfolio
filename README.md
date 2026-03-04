@@ -2,6 +2,11 @@
 
 A stunning, interactive personal portfolio website showcasing projects, skills, and experience with cutting-edge web technologies and eye-catching animations.
 
+## 🌐 Live Demo
+You can also view it online via GitHub Pages:  
+
+👉 [Click here](https://srinath-69.github.io/Personal-Portfolio/)
+
 ## ✨ Features
 
 ### 🎨 **Visual Excellence**
@@ -300,4 +305,5 @@ For questions or issues, please:
 **Made different. Made to win. 🚀**
 
 Built for Student Hackathon 2026 • Scholar IT Solutions
+
 
